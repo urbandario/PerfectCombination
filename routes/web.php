@@ -22,5 +22,8 @@ Route::get('/', function () {
 Auth::routes(['verify' => true]);
 Route::get('/waiting_admin_approval', 'PageController@showWaitAdminApproval')->name('waiting_admin_approval');
 
+Route::middleware('admin')->group(function () {
+    Route::get('/admin_home', 'AdminController@index')->name('admin_home');
+});
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');

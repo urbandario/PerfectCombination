@@ -13,7 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
+                    <a href="{{ route('admin_home') }}">Stisni me</a>
                     {{ __('You are logged in!') }}
                 </div>
             </div>
