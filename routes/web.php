@@ -23,6 +23,10 @@ Auth::routes(['verify' => true]);
 Route::get('/waiting_admin_approval', 'PageController@showWaitAdminApproval')->name('waiting_admin_approval');
 
 Route::middleware('admin')->group(function () {
+    Route::get('/check_trainers', 'AdminController@showCheckTrainers')->name('check_trainers');
+    Route::post('/trainer_request_count', 'AdminController@getCountTrainerRequest')->name('trainer_request_count');
+    Route::post('/approve_trainer', 'AdminController@updateApproveTrainer')->name('approve_trainer');
+    Route::post('/disapprove_trainer', 'AdminController@updateDisapproveTrainer')->name('disapprove_trainer');
     Route::get('/admin_home', 'AdminController@index')->name('admin_home');
 });
 
