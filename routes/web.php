@@ -37,3 +37,5 @@ Route::get('/profile', 'UserController@index')->name('profile')->middleware('ver
 Route::post('/update_avatar', 'UserController@updateAvatar')->name('update_avatar');
 Route::post('/update_biography', 'UserController@updateBiography')->name('update_biography');
 
+// Trainer routes
+// Route::get('/trainer')

@@ -40,4 +40,11 @@
         </div>
     </div>
 </div>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#biography' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
 @endsection

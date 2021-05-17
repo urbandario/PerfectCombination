@@ -35,12 +35,12 @@
     <script src="https://kit.fontawesome.com/4f2a159a87.js" crossorigin="anonymous"></script>
 
     <!-- Styles -->
-    @include('sweetalert::alert')
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" rel="stylesheet">
     <script src="//cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet"/>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <style>
         body{
             background: white;
@@ -98,6 +98,7 @@
             <i class="fa fa-angle-up" style="color: black"></i>
         </button>
     </div>
+    @include('sweetalert::alert')
     @include('partials.js.app')
 </body>
 </html>

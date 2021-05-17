@@ -56,12 +56,12 @@
             data: {"_token": "{{ csrf_token() }}", 'id': id},
             success: function (data) {
                 countTrainerRequests();
-                Swal.fire({
+                swal({
                     title: "Succes", 
                     text: "Partner approved!", 
                     icon: "success",
-                    showCancelButton: false, // There won't be any cancel button
-                    showConfirmButton: false // There won't be any confirm button
+                    showCancelButton: false,
+                    showConfirmButton: false
                 }).then(function(){ 
                    location.reload();
                    }
@@ -81,12 +81,12 @@
             data: {"_token": "{{ csrf_token() }}", 'id': id},
             success: function (data) {
                 countTrainerRequests();
-                Swal.fire({
+                swal({
                     title: "Ups", 
                     text: "Partner disapproved!", 
                     icon: "error",
-                    showCancelButton: false, // There won't be any cancel button
-                    showConfirmButton: false // There won't be any confirm button
+                    showCancelButton: false,
+                    showConfirmButton: false
                 }).then(function(){ 
                    location.reload();
                    }
@@ -105,11 +105,11 @@
             data: {"_token": "{{ csrf_token() }}"},
             success: function (count) {
                 if(count == 0){
-                    $('#partner-count').addClass('invisible');
+                    $('#trainer-count').addClass('invisible');
                 }
                 else {
-                    $('#partner-count').removeClass('invisible');
-                    $('#partner-count').html(count);
+                    $('#trainer-count').removeClass('invisible');
+                    $('#trainer-count').html(count);
                 }
             },
             error: function (data) {
