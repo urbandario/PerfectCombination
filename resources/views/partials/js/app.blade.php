@@ -11,4 +11,13 @@
     btnScrollToTop.addEventListener("click",function () {
         $("html, body").animate({scrollTop: 0}, "slow");
     });
+
+    ClassicEditor
+        .create( document.querySelector( '#biography' ) )
+        .then( editor => {
+            editor.ui.view.editable.editableElement.style.height = '500px';
+        } )
+        .catch( error => {
+            console.error( error );
+        } );
 </script>

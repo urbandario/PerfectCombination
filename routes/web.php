@@ -31,3 +31,9 @@ Route::middleware('admin')->group(function () {
 });
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
+
+// User routes
+Route::get('/profile', 'UserController@index')->name('profile')->middleware('verified');
+Route::post('/update_avatar', 'UserController@updateAvatar')->name('update_avatar');
+Route::post('/update_biography', 'UserController@updateBiography')->name('update_biography');
+

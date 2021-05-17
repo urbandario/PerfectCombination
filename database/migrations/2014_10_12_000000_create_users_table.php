@@ -22,6 +22,9 @@ class CreateUsersTable extends Migration
             $table->boolean('trainer')->default(0);
             $table->boolean('trainer_approved')->default(0);
             $table->boolean('admin')->default(0);
+            $table->string('avatar')->default('default.png');
+            $table->text('biography')->nullable();
+            $table->char('phone',32);
             $table->rememberToken();
             $table->timestamps();
         });
