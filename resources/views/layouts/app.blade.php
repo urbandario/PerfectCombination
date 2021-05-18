@@ -23,10 +23,10 @@
    <!-- Scripts -->
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
    <script src="{{ asset('js/app.js') }}"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
    <script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/classic/ckeditor.js"></script>
+   @yield('scripts')
 
    <!-- Fonts -->
    <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -37,10 +37,12 @@
 
    <!-- Styles -->
    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" rel="stylesheet">
    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" rel="stylesheet">
    <script src="//cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet"/>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
+   @yield('styles')
    <style>
        .ck-content{
            height: 250px;
@@ -89,7 +91,11 @@
                                         <hr>
                                     @endif
                                     <a class="dropdown-item" href="{{ route('profile') }}"><i class="fas fa-user"></i> Profile</a>
-
+                                    @if (auth()->user()->trainer == 1 AND auth()->user()->trainer_approved == 1)
+                                        <a class="dropdown-item" href="{{ route('training_list') }}"><i class="fas fa-dumbbell"></i> Your trainings</a>
+                                        <a class="dropdown-item" href="{{ route('exercise_list') }}"><i class="fas fa-running"></i> Add exercise</a>    
+                                        <a class="dropdown-item" href="{{ route('recipe_list') }}"><i class="fas fa-apple-alt"></i> Your recipes</a>    
+                                    @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

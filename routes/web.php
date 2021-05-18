@@ -36,6 +36,31 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('verified'
 Route::get('/profile', 'UserController@index')->name('profile')->middleware('verified');
 Route::post('/update_avatar', 'UserController@updateAvatar')->name('update_avatar');
 Route::post('/update_biography', 'UserController@updateBiography')->name('update_biography');
+Route::get('/training/{training_id}/{name}','TrainingsController@showTraining');
 
 // Trainer routes
-// Route::get('/trainer')
+Route::middleware('trainer')->group(function(){
+    // Training routes
+    Route::get('/training_list','TrainingsController@index')->name('training_list');
+    Route::get('/create_training','TrainingsController@create')->name('create_training');
+    Route::post('/create_training','TrainingsController@store')->name('create_training');
+    Route::get('/edit/training/{training_id}/{name}','TrainingsController@edit');
+    Route::post('/delete_training','TrainingsController@destroy')->name('delete_training');
+    Route::post('/update_training','TrainingsController@update')->name('update_training');
+
+    // Exercises routes
+    Route::get('/exercise_list','ExercisesController@index')->name('exercise_list');
+    Route::get('/create_exercise','ExercisesController@create')->name('create_exercise');
+    Route::post('/create_exercise','ExercisesController@store')->name('create_exercise');
+    Route::get('/edit/exercise/{exercise_id}/{name}','ExercisesController@edit');
+    Route::post('/delete_exercise','ExercisesController@destroy')->name('delete_exercise');
+    Route::post('/update_exercise','ExercisesController@update')->name('update_exercise');
+
+    // Recipes routes
+    Route::get('/recipe_list','RecipesController@index')->name('recipe_list');
+    Route::get('/create_recipe','RecipesController@create')->name('create_recipe');
+    Route::post('/create_recipe','RecipesController@store')->name('create_recipe');
+    Route::get('/edit/recipe/{recipe_id}/{name}','RecipesController@edit');
+    Route::post('/delete_recipe','RecipesController@destroy')->name('delete_recipe');
+    Route::post('/update_recipe','RecipesController@update')->name('update_recipe');
+});

@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
         $users = [
             [
                 'name' => 'Admin',
-                'email' => 'admin@gmail.rs',
+                'email' => 'admin@gmail.com',
                 'email_verified_at' => now(),
                 'password' => Hash::make('password'),
                 'trainer' => 0,
@@ -30,7 +30,7 @@ class UserSeeder extends Seeder
             ],
             [
                 'name' => 'Trener',
-                'email' => 'trener@gmail.rs',
+                'email' => 'trener@gmail.com',
                 'email_verified_at' => now(),
                 'password' => Hash::make('password'),
                 'trainer' => 1,
@@ -42,7 +42,7 @@ class UserSeeder extends Seeder
             ],
             [
                 'name' => 'Obican',
-                'email' => 'obican@gmail.rs',
+                'email' => 'obican@gmail.com',
                 'email_verified_at' => now(),
                 'password' => Hash::make('password'),
                 'trainer' => 0,
