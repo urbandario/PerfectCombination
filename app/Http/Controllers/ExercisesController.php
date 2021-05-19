@@ -7,6 +7,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 use Merujan99\LaravelVideoEmbed\Facades\LaravelVideoEmbed;
 use Illuminate\Support\Facades\Auth;
+use Image;
 
 class ExercisesController extends Controller
 {
@@ -34,25 +35,30 @@ class ExercisesController extends Controller
         $exercise->name = $request->name;
         $exercise->description = $request->description;
         $exercise->user_id = auth()->user()->id;
-        $url = $request->url;
-        $whitelist = ['YouTube'];
 
-        if (LaravelVideoEmbed::parse($url, $whitelist) == null){
-            return back()->withErrors(trans('swal.urlInputFormat'));
+        if($request->url != null)
+        {
+            $url = $request->url;
+            $whitelist = ['YouTube'];
+    
+            if (LaravelVideoEmbed::parse($url, $whitelist) == null){
+                return back()->withErrors(trans('swal.urlInputFormat'));
+            }
+    
+            $iframe = LaravelVideoEmbed::parse($url, $whitelist);
+    
+            preg_match('~embed/(.*?)\?~', $iframe, $output);
+            $url = $output[1];
+    
+            $exercise->video = $url;
         }
-
-        $iframe = LaravelVideoEmbed::parse($url, $whitelist);
-
-        preg_match('~embed/(.*?)\?~', $iframe, $output);
-        $url = $output[1];
-
-        $exercise->video = $url;
+        
 
         if($request->hasFile('thumbnail')){
-            $thumbnail = $request->file('thumbnail');
-            $filename = time() . '.' . $thumbnail->getClientOriginalExtension();
-            Image::make($thumbnail)->resize(200, 200)->save( public_path('/img/exercise/' . $filename ) );
-            $exercise->thumbnail = $filename;
+            $image = $request->file('thumbnail');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->resize(200, 200)->save( public_path('/img/exercise/' . $filename ) );
+            $exercise->image = $filename;
             $exercise->save();
         }
 
@@ -62,25 +68,15 @@ class ExercisesController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Exercises  $exercises
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Exercise $exercises)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Exercises  $exercises
      * @return \Illuminate\Http\Response
      */
-    public function edit(Exercise $exercises)
+    public function edit($exercise_id)
     {
-        //
+        $exercise = Exercise::find($exercise_id);
+        return view('trainer.edit_exercise')->with('exercise',$exercise);
     }
 
     /**
@@ -90,9 +86,41 @@ class ExercisesController extends Controller
      * @param  \App\Models\Exercises  $exercises
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Exercise $exercises)
+    public function update(Request $request)
     {
-        //
+        $exercise = Exercise::find($request->exercise_id);
+
+        $exercise->name = $request->name;
+        $exercise->description = $request->description;
+        $exercise->user_id = auth()->user()->id;
+
+        if($request->url != null)
+        {
+            $url = $request->url;
+            $whitelist = ['YouTube'];
+    
+            if (LaravelVideoEmbed::parse($url, $whitelist) == null){
+                return back()->withErrors(trans('swal.urlInputFormat'));
+            }
+    
+            $iframe = LaravelVideoEmbed::parse($url, $whitelist);
+    
+            preg_match('~embed/(.*?)\?~', $iframe, $output);
+            $url = $output[1];
+    
+            $exercise->video = $url;
+        }
+        
+        if($request->hasFile('thumbnail')){
+            $image = $request->file('thumbnail');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->resize(200, 200)->save( public_path('/img/exercise/' . $filename ) );
+            $exercise->image = $filename;
+            $exercise->save();
+        }
+        $exercise->save();
+        toast('Exercise updated!','success','top-right')->showCloseButton();
+        return redirect('/exercise_list');
     }
 
     /**

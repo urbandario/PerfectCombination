@@ -18,7 +18,10 @@
                                     <div class="card-body">
                                       <h5 class="card-title font-weight-bold">Name: {{ $training->name }} </h5>
                                       <span class="card-text font-weight-bold">Type of training: {{ $training->type }}</span>
-                                      <p class="card-text">Description: {{ $training->description }}</p>
+                                      <p class="card-text">Description: {{ $training->description }}</p><br>
+                                      @if ($training->recipe()->first() != null)
+                                        <p class="card-text">Recepi: {{ $training->recipe()->first()->name }}</p>
+                                      @endif
                                     </div>
                                     <div class="card-footer">
                                         <div class="row">

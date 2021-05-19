@@ -24,6 +24,14 @@ class Ingredient extends Model
     /**
      * Get the ingredients of the recipe.
      */
+    public function recipesGet()
+    {
+        return $this->belongsToMany('App\Models\Recipe','recipe_ingredients','ingredient_id','recipe_id')->get();
+    }
+
+    /**
+     * Get the ingredients of the recipe.
+     */
     public function recipes()
     {
         return $this->belongsToMany('App\Models\Recipe','recipe_ingredients');

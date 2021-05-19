@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ingredient;
+use App\Models\Recipe;
 use Illuminate\Http\Request;
+use Image;
 
 class IngredientsController extends Controller
 {
@@ -14,7 +16,6 @@ class IngredientsController extends Controller
      */
     public function index()
     {
-        //
     }
 
     /**
@@ -24,7 +25,7 @@ class IngredientsController extends Controller
      */
     public function create()
     {
-        //
+        return view('partials.modals.create_ingredient');
     }
 
     /**
@@ -35,7 +36,29 @@ class IngredientsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $ingredient = new Ingredient();
+
+        $ingredient->name = $request->name;
+        $ingredient->calorie = $request->calorie;
+        $ingredient->description = $request->description;
+        $ingredient->save();
+
+        if($request->hasFile('thumbnail')){
+            $thumbnail = $request->file('thumbnail');
+            $filename = time() . '.' . $thumbnail->getClientOriginalExtension();
+            Image::make($thumbnail)->resize(200, 200)->save( public_path('/img/ingredients/' . $filename ) );
+            $ingredient->thumbnail = $filename;
+            $ingredient->save();
+        }
+
+        toast('Ingredient added!','success','top-right')->showCloseButton();
+        return redirect('/create_recipe');
+    }
+
+    public function seeIngredients(Request $request)
+    {
+        $recipe = Recipe::find($request->id);
+        return view('partials.modals.see_ingredients')->with('recipe',$recipe);
     }
 
     /**

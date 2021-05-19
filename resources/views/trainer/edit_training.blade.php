@@ -69,16 +69,20 @@
                                     <h5>Choose recepi: </h5><br/>
                                     <select name="recipe" id="recipe" class="form-control selectpicker"  title="Choose one of the recipies..." data-live-search="true">
                                         @foreach ($recipes as $recipe)
-                                            <option value="{{$recipe->id}}" @if($selectedRecipes) selected @endif>{{$recipe->name}}</option>
+                                            <option value="{{$recipe->id}}" @if($recipe->id == $selectedRecipes) selected @endif>{{$recipe->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
                             <hr>
                             <div class="row">
-                                <div class="col-12">
+                                <div class="col-12 col-md-6">
                                     <h5>Add thumbnail: </h5><br/>
                                     <input type="file" id="thumbnail" name="thumbnail"><br><br>
+                                </div>
+                                <div class="col-12 col-md-6 text-center">
+                                    <h5>Current thumbnail: </h5><br/>
+                                    <img src="/img/trainings/{{ $training->thumbnail }}" class="image-look" alt="Training">
                                 </div>
                             </div>
 
@@ -86,7 +90,7 @@
                         <input type="hidden" name="training_id" id="training_id" value="{{ isset($training->id)?$training->id:"" }}"/>
                         <input type="hidden" name="hidden_recipe" id="hidden_recipe" value="{{ $selectedRecipes }}"/>
                         <input type="hidden" name="hidden_exercise" id="hidden_exercise" value="{{ json_encode($selectedExercises) }}"/>
-                        <button type="submit" class="btn btn-primary">Create</button>
+                        <button type="submit" class="btn btn-success">Change</button>
                     </form>
                 </div>
             </div>

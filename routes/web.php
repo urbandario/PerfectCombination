@@ -63,4 +63,13 @@ Route::middleware('trainer')->group(function(){
     Route::get('/edit/recipe/{recipe_id}/{name}','RecipesController@edit');
     Route::post('/delete_recipe','RecipesController@destroy')->name('delete_recipe');
     Route::post('/update_recipe','RecipesController@update')->name('update_recipe');
+
+    // Ingredient routes
+    Route::get('/ingredient_list','IngredientsController@index')->name('ingredient_list');
+    Route::get('/see_ingredients','IngredientsController@seeIngredients')->name('see_ingredients');
+    Route::get('/create_ingredient','IngredientsController@create')->name('create_ingredient');
+    Route::post('/create_ingredient','IngredientsController@store')->name('create_ingredient');
+    Route::get('/edit/ingredient/{ingredient_id}/{name}','IngredientsController@edit');
+    Route::post('/delete_ingredient','IngredientsController@destroy')->name('delete_ingredient');
+    Route::post('/update_ingredient','IngredientsController@update')->name('update_ingredient');
 });

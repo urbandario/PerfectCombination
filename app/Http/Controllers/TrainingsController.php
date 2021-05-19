@@ -8,6 +8,7 @@ use App\Models\Training;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Image;
 
@@ -20,7 +21,7 @@ class TrainingsController extends Controller
      */
     public function index()
     {
-        $trainings = Training::all();
+        $trainings = Training::where('user_id', Auth::id())->get();
         return view('trainer.training_list')->with('trainings',$trainings);
     }
 
@@ -31,8 +32,8 @@ class TrainingsController extends Controller
      */
     public function create()
     {
-        $exercises = Exercise::all();
-        $recipes = Recipe::all();
+        $exercises = Exercise::where('user_id', Auth::id())->get();
+        $recipes = Recipe::where('user_id', Auth::id())->get();
         return view('trainer.create_training')->with(['exercises'=>$exercises,'recipes'=>$recipes]);
     }
 
@@ -95,6 +96,7 @@ class TrainingsController extends Controller
     public function showTraining($training_id)
     {
         $training = Training::find($training_id);
+        dd($training->recipe());
         return view('training')->with('training',$training);
     }
 
@@ -107,8 +109,8 @@ class TrainingsController extends Controller
     public function edit($training_id)
     {
         $training = Training::find($training_id);
-        $exercises = Exercise::all();
-        $recipes = Recipe::all();
+        $exercises = Exercise::where('user_id', Auth::id())->get();
+        $recipes = Recipe::where('user_id', Auth::id())->get();
         $selectedExercises =  $training->exercises()->pluck('exercises.id')->toArray();
         $selectedRecipes = $training->recipe_id;
         return view('trainer.edit_training')->with(['exercises'=>$exercises,'recipes'=>$recipes,'training'=>$training,'selectedExercises'=>$selectedExercises,'selectedRecipes'=>$selectedRecipes]);

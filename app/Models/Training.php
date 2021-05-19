@@ -38,6 +38,16 @@ class Training extends Model
     }
 
     /**
+     * Get recipe for training
+     * 
+     * @return [type]
+     */
+    public function recipe()
+    {
+        return $this->belongsTo('App\Models\Recipe')->get();
+    }
+    
+    /**
      *  Get a "clean" url string,
      *  an training route with the training id and name
      *  without spaces and special characters

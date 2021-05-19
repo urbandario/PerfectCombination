@@ -47,6 +47,11 @@
        .ck-content{
            height: 250px;
        }
+       .image-look{
+            border-radius: 25px;
+            border: 2 solid #5a5a5a;
+            box-shadow: 5px 5px 20px green;
+       }
    </style>
     
 </head>
