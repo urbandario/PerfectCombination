@@ -31,6 +31,14 @@ class Exercise extends Model
     }
 
     /**
+     * Get the ingredients of the recipe.
+     */
+    public function trainingsGet()
+    {
+        return $this->belongsToMany('App\Models\Exercise','training_exercises','exercise_id','training_id')->get();
+    }
+
+    /**
      *  Get a "clean" url string,
      *  an training route with the training id and name
      *  without spaces and special characters

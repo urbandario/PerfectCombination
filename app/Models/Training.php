@@ -30,6 +30,14 @@ class Training extends Model
     }
     
     /**
+     * Get the ingredients of the recipe.
+     */
+    public function exercisesGet()
+    {
+        return $this->belongsToMany('App\Models\Exercise','training_exercises','training_id','exercise_id')->get();
+    }
+
+    /**
      * Get the exercises of the training.
      */
     public function exercises()

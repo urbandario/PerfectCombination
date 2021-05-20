@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div id="insertSeeIngredients"></div>
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">List of recipes <a href="{{ route('create_recipe') }}" class="btn btn-outline-success text-left" style="float: right" role="button" aria-pressed="true">Create recipe</a></div>
 

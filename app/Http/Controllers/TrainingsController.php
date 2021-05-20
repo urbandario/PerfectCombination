@@ -78,7 +78,7 @@ class TrainingsController extends Controller
         if($request->hasFile('thumbnail')){
             $thumbnail = $request->file('thumbnail');
             $filename = time() . '.' . $thumbnail->getClientOriginalExtension();
-            Image::make($thumbnail)->resize(200, 200)->save( public_path('/img/trainings/' . $filename ) );
+            Image::make($thumbnail)->resize(300, 300)->save( public_path('/img/trainings/' . $filename ) );
             $training->thumbnail = $filename;
             $training->save();
         }
@@ -96,8 +96,13 @@ class TrainingsController extends Controller
     public function showTraining($training_id)
     {
         $training = Training::find($training_id);
-        dd($training->recipe());
         return view('training')->with('training',$training);
+    }
+
+    public function showAll()
+    {
+        $trainings = Training::all();
+        return view('trainings')->with('trainings',$trainings);
     }
 
     /**
@@ -154,7 +159,7 @@ class TrainingsController extends Controller
         if($request->hasFile('thumbnail')){
             $thumbnail = $request->file('thumbnail');
             $filename = time() . '.' . $thumbnail->getClientOriginalExtension();
-            Image::make($thumbnail)->resize(200, 200)->save( public_path('/img/trainings/' . $filename ) );
+            Image::make($thumbnail)->resize(300, 300)->save( public_path('/img/trainings/' . $filename ) );
             $training->thumbnail = $filename;
             $training->save();
         }

@@ -11,7 +11,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">Edit <span class="font-weight-bold">{{ $recipe->name }} </span> recipe<a href="{{ route('recipe_list') }}" class="btn btn-outline-success text-left" style="float: right" role="button" aria-pressed="true">Back on list</a></div>
 

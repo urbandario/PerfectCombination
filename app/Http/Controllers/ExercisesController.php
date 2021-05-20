@@ -57,7 +57,7 @@ class ExercisesController extends Controller
         if($request->hasFile('thumbnail')){
             $image = $request->file('thumbnail');
             $filename = time() . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->resize(200, 200)->save( public_path('/img/exercise/' . $filename ) );
+            Image::make($image)->resize(300, 300)->save( public_path('/img/exercise/' . $filename ) );
             $exercise->image = $filename;
             $exercise->save();
         }
@@ -114,7 +114,7 @@ class ExercisesController extends Controller
         if($request->hasFile('thumbnail')){
             $image = $request->file('thumbnail');
             $filename = time() . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->resize(200, 200)->save( public_path('/img/exercise/' . $filename ) );
+            Image::make($image)->resize(300, 300)->save( public_path('/img/exercise/' . $filename ) );
             $exercise->image = $filename;
             $exercise->save();
         }

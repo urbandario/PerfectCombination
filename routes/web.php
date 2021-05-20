@@ -36,7 +36,14 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('verified'
 Route::get('/profile', 'UserController@index')->name('profile')->middleware('verified');
 Route::post('/update_avatar', 'UserController@updateAvatar')->name('update_avatar');
 Route::post('/update_biography', 'UserController@updateBiography')->name('update_biography');
+
 Route::get('/training/{training_id}/{name}','TrainingsController@showTraining');
+Route::get('/trainings','TrainingsController@showAll')->name('trainings');
+
+Route::get('/recipes','RecipesController@showAll')->name('recipes');
+
+// Contact routes
+
 
 // Trainer routes
 Route::middleware('trainer')->group(function(){

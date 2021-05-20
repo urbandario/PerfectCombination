@@ -13,7 +13,7 @@
     <div class="row justify-content-center">
         <div id="insertCreateIngredient"></div>
 
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">Add recipe</div>
 

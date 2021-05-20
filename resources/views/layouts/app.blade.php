@@ -59,14 +59,28 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" style="padding: 0px 10px 0px 10px">
             <div class="container">
-                <a class="navbar-brand" title="{{__('general.backToHomePage')}}" href="{{route('home')}}">
-                    <img style="width: 150px" src="{{asset('img/logo.png')}}" alt="Logo">
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                <div class="col-12 col-md-3 text-center">
+                    <a class="navbar-brand" title="{{__('general.backToHomePage')}}" href="{{route('home')}}">
+                        <img style="width: 150px" src="{{asset('img/logo.png')}}" alt="Logo">
+                    </a>
+                    <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('general.navigation') }}">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!--Button for Collapsed Profile List -->
+                    <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navbarSupportedProfile" aria-controls="navbarSupportedProfile" aria-expanded="false" aria-label="{{ __('general.navigation') }}">
+                        @guest
+                            <i class="far fa-user"></i>
+                            @else
+                                <img src="/img/avatars/{{ Auth::user()->avatar }}" style="width:32px; height:32px; top:10px; left:10px; border-radius:50%">
+                        @endguest
+                    </button>
+                </div>
+                @include('partials.profile_collapse')
+
+                @include('partials.menu_collapse')
+
+                <div class="col-12 col-md-3 d-none d-sm-none d-md-block d-lg-block d-xl-block">
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
@@ -83,6 +97,7 @@
                                 </li>
                             @endif
                         @else
+                        <div class="row">
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     <img src="/img/avatars/{{ Auth::user()->avatar }}" style="width:32px; height:32px; top:10px; left:10px; border-radius:50%">
@@ -112,6 +127,7 @@
                                     </form>
                                 </div>
                             </li>
+                        </div>
                         @endguest
                     </ul>
                 </div>
