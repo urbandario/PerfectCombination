@@ -51,9 +51,12 @@
         <div class="relative flex items-top justify-center min-h-screen sm:items-center sm:pt-0">
             @if (Route::has('login'))
                 <div class="fixed top-0 right-0 px-6 py-4 sm:block">
+                    <a href="{{ url('/home') }}" style="color: white" class="text-sm underline mr-4">Home</a>
+
                     @auth
                         <a href="{{ url('/home') }}" style="color: white" class="text-sm underline">Home</a>
                     @else
+
                         <a href="{{ route('login') }}" style="color: white" class="text-sm  underline">Log in</a>
 
                         @if (Route::has('register'))

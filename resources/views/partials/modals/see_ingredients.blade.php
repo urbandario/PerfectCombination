@@ -12,7 +12,7 @@
                         <div class="row">
                             @foreach ($recipe->ingredientsGet() as $ingredient)
                                 <div class="col-12 text-center col-md-4">
-                                    <img src="/img/ingredients/{{ $ingredient->thumbnail }}" class="image-look" alt="Recipe">
+                                    <img src="/img/ingredients/{{ $ingredient->thumbnail }}" class="image-look img-fluid" alt="Recipe">
                                 </div>
                                 <div class="col-12 col-md-5">
                                     <h5>Name: {{ $ingredient->name }}</h5>

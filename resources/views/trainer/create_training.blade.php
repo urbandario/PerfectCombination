@@ -23,35 +23,23 @@
                             <div class="row">
                                 <div class="col-6 mb-3">
                                     <h5 for="name">Name</h5>
-                                    <input id="name" type="text" maxlength="32"  class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                    <input id="name" type="text" maxlength="32"  class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" autocomplete="name" autofocus>
                                     <small id="infoName" class="text-secondary"></small><br>
 
-                                    @error('name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    <strong class="text-danger">@error('name'){{ $message }}@enderror</strong>
                                 </div>
                                 <div class="col-6 mb-3">
                                     <h5 for="type">Type</h5>
                                     <input id="type" type="text" maxlength="25"  class="form-control @error('type') is-invalid @enderror" name="type" value="{{ old('type') }}" required autocomplete="type" autofocus>
                                     <small id="infoType" class="text-secondary"></small><br>
 
-                                    @error('type')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    <strong class="text-danger">@error('type'){{ $message }}@enderror</strong>
                                 </div>
                                 <div class="col-12 mb-3">
                                     <h5 for="description" class="mt-3">Description</h5>
                                     <textarea rows="4" , cols="54" class="form-control @error('description') is-invalid @enderror" name="description" id="description" required >{{ old('description') }}</textarea>
                                     <small id="infoDescription" class="text-secondary"></small><br>
-                                    @error('description')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    <strong class="text-danger">@error('description'){{ $message }}@enderror</strong>
                                 </div>
                             </div>
                             <hr>
@@ -63,7 +51,10 @@
                                         @foreach ($exercises as $exercise)
                                             <option value="{{$exercise->id}}">{{$exercise->name}}</option>
                                         @endforeach
-                                    </select>
+                                    </select><br>
+                                    @error('hidden_exercise')
+                                        <strong class="text-danger">{{ $message }}</strong>
+                                    @enderror  
                                 </div>
                                 <div class="col-6">
                                     <h5>Choose recepi: </h5><br/>
@@ -71,7 +62,11 @@
                                         @foreach ($recipes as $recipe)
                                             <option value="{{$recipe->id}}">{{$recipe->name}}</option>
                                         @endforeach
-                                    </select>
+                                    </select><br>
+                                    <strong class="text-danger">@error('hidden_recipe'){{ $message }}@enderror</strong>
+                                    @error('hidden_recipe')
+                                        <strong class="text-danger">{{ $message }}</strong>
+                                    @enderror
                                 </div>
                             </div>
                             <hr>
@@ -79,12 +74,15 @@
                                 <div class="col-12">
                                     <h5>Add thumbnail: </h5><br/>
                                     <input type="file" id="thumbnail" name="thumbnail"><br><br>
+                                    <strong class="text-danger">@error('thumbnail'){{ $message }}@enderror</strong>
                                 </div>
                             </div>
 
                         </div>
                         <input type="hidden" name="hidden_recipe" id="hidden_recipe" />
+                        
                         <input type="hidden" name="hidden_exercise" id="hidden_exercise" />
+                        
                         <button type="submit" class="btn btn-success">Create</button>
                     </form>
                 </div>

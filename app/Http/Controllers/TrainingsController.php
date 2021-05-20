@@ -45,22 +45,17 @@ class TrainingsController extends Controller
      */
     public function store(Request $request)
     {
-        // $validator = Validator::make($request->all(), [
-        //     'id' => ['required', 'exists:users,id'],
-        //     'name' => ['required', 'max:32'],
-        //     'type' => ['required', 'max:25'],
-        //     'description' => ['required', 'max:255'],
-        //     'hidden_recipe' => ['nullable'],
-        //     'price' => ['nullable'],
-        //     'thumbnail' => ['nullable','string'],
-        //     'hidden_exercise'=> ['required'],
-        // ]);
 
-        // $validator->validate();
+        $request->validate([
+           'name' => 'required|max:32',
+           'type' => 'required|max:25',
+           'description' => 'required|max:255',
+           'hidden_recipe' => 'nullable',
+           'price' => 'nullable',
+           'thumbnail' => 'nullable|string',
+           'hidden_exercise'=> 'required',
+        ]);
 
-        // if ($validator->fails()) {
-        //     return response()->json();
-        // }
         $training = new Training();
 
         $training->name = $request->name;

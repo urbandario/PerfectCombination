@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Ingredient;
 use App\Models\Recipe;
+use App\Models\Training;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Image;
@@ -19,6 +20,18 @@ class RecipesController extends Controller
     {
         $recipes = Recipe::where('user_id', Auth::id())->cursorPaginate(5);
         return view('trainer.recipe_list')->with('recipes',$recipes);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Training  $training
+     * @return \Illuminate\Http\Response
+     */
+    public function seeRecipe(Request $request)
+    {
+        $training = Training::find($request->id);
+        return view('partials.modals.recipe')->with('training',$training);
     }
 
     /**

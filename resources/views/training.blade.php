@@ -59,10 +59,16 @@
 
 @section('content')
 <div class="container">
+    <div id="insertSeeIngredients"></div>
+    <div id="insertSeeRecipe"></div>
+
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header"><h3>{{ $training->name }} <i class="fas fa-running"></i><a href="{{ route('trainings') }}" class="btn btn-outline-success text-left" style="float: right" role="button" aria-pressed="true">Go back</a></h3></div>
+                <div class="card-header"><h3>{{ $training->name }} <i class="fas fa-running"></i>
+                    <a href="{{ route('trainings') }}" class="btn btn-outline-success text-left ml-2" style="float: right" role="button" aria-pressed="true">Go back</a>
+                    <button type="button" title="See all ingredients" class="btn btn-success text-left" data-toggle="modal" style="float: right" onclick="seeRecipe( {{ $training->id }} )">Check recipe <i class="fas fa-carrot"></i></button>
+                </div>
 
                 <div class="card-body">
                     <div class="row">
@@ -82,7 +88,9 @@
                                 @endif
                             </div>
                             <div class="col-6">
+                                <h4 class="font-weight-bold">{{ $exercise->name }}</h4>
                                 <p>{!! $exercise->description !!}</p>
+                                
                             </div>
                             <hr class="w-100">
                         @endforeach
@@ -104,38 +112,6 @@
         </div>
       </div>
     </div>
-  </div>
-<script>
-    $("#pop").on("click", function() {
-        $('#imagemodal').modal('show');
-    });
-
-document.addEventListener("DOMContentLoaded",
-        function() {
-            var div, n,
-            v = document.getElementsByClassName("youtube-player");
-            for (n = 0; n < v.length; n++) {
-                div = document.createElement("div");
-                div.setAttribute("data-id", v[n].dataset.id);
-                div.innerHTML = labnolThumb(v[n].dataset.id);
-                div.onclick = labnolIframe;
-                v[n].appendChild(div);
-            }
-         }
-    );
-
-    function labnolThumb(id) {
-        var thumb = '<img src="https://i.ytimg.com/vi/ID/hqdefault.jpg" class="image-look">',
-            play = '<div class="play"></div>';
-        return thumb.replace("ID", id) + play;
-    }
-
-    function labnolIframe() {
-        var iframe = document.createElement("iframe");
-        iframe.setAttribute("src", "https://www.youtube.com/embed/" + this.dataset.id + "?autoplay=1");
-        iframe.setAttribute("frameborder", "0");
-        iframe.setAttribute("allowfullscreen", "1");
-        this.parentNode.replaceChild(iframe, this);
-    }
-</script>
+</div>
+@include('partials.js.training')
 @endsection

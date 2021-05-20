@@ -30,7 +30,7 @@ Route::middleware('admin')->group(function () {
     Route::get('/admin_home', 'AdminController@index')->name('admin_home');
 });
 
-Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
+Route::get('/home', 'HomeController@index')->name('home');
 
 // User routes
 Route::get('/profile', 'UserController@index')->name('profile')->middleware('verified');
@@ -40,6 +40,8 @@ Route::post('/update_biography', 'UserController@updateBiography')->name('update
 Route::get('/training/{training_id}/{name}','TrainingsController@showTraining');
 Route::get('/trainings','TrainingsController@showAll')->name('trainings');
 
+Route::get('/see_recipe','RecipesController@seeRecipe')->name('see_recipe');
+Route::get('/see_ingredients','IngredientsController@seeIngredients')->name('see_ingredients');
 Route::get('/recipes','RecipesController@showAll')->name('recipes');
 
 // Contact routes
@@ -73,7 +75,6 @@ Route::middleware('trainer')->group(function(){
 
     // Ingredient routes
     Route::get('/ingredient_list','IngredientsController@index')->name('ingredient_list');
-    Route::get('/see_ingredients','IngredientsController@seeIngredients')->name('see_ingredients');
     Route::get('/create_ingredient','IngredientsController@create')->name('create_ingredient');
     Route::post('/create_ingredient','IngredientsController@store')->name('create_ingredient');
     Route::get('/edit/ingredient/{ingredient_id}/{name}','IngredientsController@edit');
