@@ -52,7 +52,7 @@ class TrainingsController extends Controller
            'description' => 'required|max:255',
            'hidden_recipe' => 'nullable',
            'price' => 'nullable',
-           'thumbnail' => 'nullable|string',
+           'thumbnail' => 'nullable',
            'hidden_exercise'=> 'required',
         ]);
 

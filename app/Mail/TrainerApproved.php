@@ -37,7 +37,7 @@ class TrainerApproved extends Mailable
     public function build()
     {
         return $this->from(env('MAIL_FROM_ADDRESS'), 'PerfectCombination')
-            ->subject('Partner Request Approved!')
+            ->subject('Trainer Request Approved!')
             ->markdown('emails.trainer_approved');
     }
 }

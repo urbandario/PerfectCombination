@@ -9,7 +9,7 @@
 
                     <div class="card-body">
                         We are very sorry for the inconvenience. 
-                        Because you requested to be a partner/dealer for the company we have to take additional steps to insure the integrity of given information. 
+                        Because you requested to be a trainrt. 
                         You will be promptly informed as soon as you have access to your account. 
                         Thank you for choosing us!
                     </div>

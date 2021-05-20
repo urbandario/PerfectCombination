@@ -23,7 +23,7 @@
                             <div class="row">
                                 <div class="col-6 mb-3">
                                     <h5 for="name">Name</h5>
-                                    <input id="name" type="text" maxlength="32"  class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" autocomplete="name" autofocus>
+                                    <input id="name" type="text" maxlength="32"  class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
                                     <small id="infoName" class="text-secondary"></small><br>
 
                                     <strong class="text-danger">@error('name'){{ $message }}@enderror</strong>
@@ -46,7 +46,7 @@
 
                             <div class="row">
                                 <div class="col-6">
-                                    <h5>Choose exersises: </h5><br/>
+                                    <h5>Choose exercises: </h5><br/>
                                     <select name="exercise" id="exercise" class="form-control selectpicker" title="Can choose more than one" data-live-search="true" multiple>
                                         @foreach ($exercises as $exercise)
                                             <option value="{{$exercise->id}}">{{$exercise->name}}</option>
