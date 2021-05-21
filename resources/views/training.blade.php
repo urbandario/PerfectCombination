@@ -66,14 +66,14 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header"><h3>{{ $training->name }} <i class="fas fa-running"></i>
-                    <a href="{{ route('trainings') }}" class="btn btn-outline-success text-left ml-2" style="float: right" role="button" aria-pressed="true">Go back</a>
-                    <button type="button" title="See all ingredients" class="btn btn-success text-left" data-toggle="modal" style="float: right" onclick="seeRecipe( {{ $training->id }} )">Check recipe <i class="fas fa-carrot"></i></button>
+                    <a href="{{ route('trainings') }}" class="btn btn-outline-success text-left ml-2" role="button" aria-pressed="true">Go back</a>
+                    <button type="button" title="See all ingredients" class="btn btn-success text-left" data-toggle="modal" onclick="seeRecipe( {{ $training->id }} )">Check recipe <i class="fas fa-carrot"></i></button>
                 </div>
 
                 <div class="card-body">
                     <div class="row">
                         @foreach ($training->exercisesGet() as $exercise)
-                            <div class="col-6 text-center">
+                            <div class="col-12 col-md-6 text-center">
                                 @if ($exercise->video != null)
                                     <div class="youtube-player" data-id="{{$exercise->video}}"></div>
                                     @if ($exercise->image != null)
@@ -87,7 +87,7 @@
                                   No video or photo
                                 @endif
                             </div>
-                            <div class="col-6">
+                            <div class="col-12 col-md-6">
                                 <h4 class="font-weight-bold">{{ $exercise->name }}</h4>
                                 <p>{!! $exercise->description !!}</p>
                                 
@@ -108,7 +108,7 @@
           <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
         </div>
         <div class="modal-body">
-          <img src="/img/exercise/{{ $exercise->image }}" style="width: 400px; height: 264px;" >
+          <img src="/img/exercise/{{ $exercise->image }}" class="img-fluid" style="max-height:400px; width: 100%;">
         </div>
       </div>
     </div>

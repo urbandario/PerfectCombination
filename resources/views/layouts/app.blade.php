@@ -60,7 +60,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" style="padding: 0px 10px 0px 10px">
             <div class="container">
                 <div class="col-12 col-md-3 text-center">
-                    <a class="navbar-brand" title="{{__('general.backToHomePage')}}" href="{{route('home')}}">
+                    <a class="navbar-brand" title="Home page" href="{{route('home')}}">
                         <img style="width: 150px" src="{{asset('img/logo.png')}}" alt="Logo">
                     </a>
                     <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('general.navigation') }}">

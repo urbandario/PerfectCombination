@@ -10,7 +10,7 @@
             <a class="nav-link" style="color: green" href="{{ route('recipes') }}">Recipes</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" style="color: green" href="#">Contact</a>
+            <a class="nav-link" style="color: green" href="{{ route('contact') }}">Contact</a>
         </li>
     </ul>
 </div>

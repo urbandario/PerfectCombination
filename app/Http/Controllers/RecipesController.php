@@ -34,6 +34,12 @@ class RecipesController extends Controller
         return view('partials.modals.recipe')->with('training',$training);
     }
 
+    public function showAll()
+    {
+        $recipes = Recipe::all();
+        return view('recipes')->with('recipes',$recipes);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

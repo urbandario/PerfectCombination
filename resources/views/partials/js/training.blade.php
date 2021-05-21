@@ -1,4 +1,7 @@
 <script>
+     $("#pop").on("click", function() {
+        $('#imagemodal').modal('show');
+    });
     document.addEventListener("DOMContentLoaded",
         function() {
             var div, n,
@@ -110,9 +113,4 @@
             }
         })
     }
-
-    $("#pop").on("click", function() {
-        $('#imagemodal').modal('show');
-    });
-
 </script>

@@ -45,7 +45,8 @@ Route::get('/see_ingredients','IngredientsController@seeIngredients')->name('see
 Route::get('/recipes','RecipesController@showAll')->name('recipes');
 
 // Contact routes
-
+Route::get('/contact','ContactUsController@createForm')->name('contact');
+Route::post('/contact','ContactUsController@ContactUsForm')->name('contact.store');
 
 // Trainer routes
 Route::middleware('trainer')->group(function(){
