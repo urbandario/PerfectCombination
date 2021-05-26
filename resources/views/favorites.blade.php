@@ -5,10 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header"><h3>Available trainings <i class="fas fa-dumbbell"></i></h3></div>
+                <div class="card-header"><h3>Favorited trainings <i class="fas fa-heart"></i></h3></div>
                 <div class="card-body">
                     <div class="row">
-                        @foreach ($trainings as $training)
+                        @foreach ($favorites as $training)
                             <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-4">
                                 <div class="card">
                                     @if ($training->thumbnail != null)
