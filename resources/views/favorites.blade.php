@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header"><h3>Favorited trainings <i class="fas fa-heart"></i></h3></div>
+                <div class="card-header"><h3>Favorite trainings <i class="fas fa-heart"></i></h3></div>
                 <div class="card-body">
                     <div class="row">
                         @foreach ($favorites as $training)

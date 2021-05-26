@@ -9,7 +9,7 @@
 
                     <div class="card-body">
                         We are very sorry for the inconvenience. 
-                        Because you requested to be a trainrt. 
+                        Because you requested to be a trainer. 
                         You will be promptly informed as soon as you have access to your account. 
                         Thank you for choosing us!
                     </div>

@@ -67,7 +67,9 @@
             <div class="card">
                 <div class="card-header"><h3>{{ $training->name }} <i class="fas fa-running"></i>
                     <a href="{{ route('trainings') }}" class="btn btn-outline-success text-left ml-2" role="button" aria-pressed="true">Go back</a>
-                    <button type="button" title="See all ingredients" class="btn btn-success text-left" data-toggle="modal" onclick="seeRecipe( {{ $training->id }} )">Check recipe <i class="fas fa-carrot"></i></button>
+                    @if ($training->recipe_id != 0)
+                        <button type="button" title="See recipe" class="btn btn-success text-left" data-toggle="modal" onclick="seeRecipe( {{ $training->id }} )">Check recipe <i class="fas fa-carrot"></i></button>
+                    @endif
                 </div>
 
                 <div class="card-body">
@@ -76,11 +78,6 @@
                             <div class="col-12 col-md-6 text-center">
                                 @if ($exercise->video != null)
                                     <div class="youtube-player" data-id="{{$exercise->video}}"></div>
-                                    @if ($exercise->image != null)
-                                        <a href="#" id="pop" class="btn btn-outline-success">
-                                            Preview Image
-                                        </a>
-                                    @endif
                                 @elseif ($exercise->image != null)
                                     <img class="image-look" src="/img/exercise/{{ $exercise->image }}">
                                 @else
@@ -100,18 +97,6 @@
         </div>
     </div>
 </div>
-<!-- Creates the bootstrap modal where the image will appear -->
-<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        </div>
-        <div class="modal-body">
-          <img src="/img/exercise/{{ $exercise->image }}" class="img-fluid" style="max-height:400px; width: 100%;">
-        </div>
-      </div>
-    </div>
-</div>
+
 @include('partials.js.training')
 @endsection
