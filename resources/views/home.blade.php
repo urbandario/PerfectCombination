@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <h1 class="text-center">Dobro dosli napoleon gengsta</h1>
+            <h1 class="text-center"></h1>
         </div>
     </div>
 </div>

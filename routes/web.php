@@ -48,6 +48,10 @@ Route::get('/recipes','RecipesController@showAll')->name('recipes');
 Route::get('/contact','ContactUsController@createForm')->name('contact');
 Route::post('/contact','ContactUsController@ContactUsForm')->name('contact.store');
 
+//Favorites routes
+Route::get('/my_favorites','FavoritesController@index')->name('favorites');
+Route::post('/update_favorite','FavoritesController@updateFavorite')->name('update_favorite');
+
 // Trainer routes
 Route::middleware('trainer')->group(function(){
     // Training routes

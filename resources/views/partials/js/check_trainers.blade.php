@@ -57,9 +57,9 @@
             success: function (data) {
                 countTrainerRequests();
                 swal({
-                    title: "Succes", 
+                    title: "Success", 
                     text: "Partner approved!", 
-                    icon: "success",
+                    type: "success",
                     showCancelButton: false,
                     showConfirmButton: false
                 }).then(function(){ 

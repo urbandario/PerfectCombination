@@ -46,6 +46,14 @@ class Training extends Model
     }
 
     /**
+     * Get users that favored the article.
+     */
+    public function usersFavorite()
+    {
+        return $this->belongsToMany('App\Models\User','favorite_trainings');
+    }
+
+    /**
      * Get recipe for training
      * 
      * @return [type]

@@ -111,6 +111,8 @@
                                         <hr>
                                     @endif
                                     <a class="dropdown-item" href="{{ route('profile') }}"><i class="fas fa-user"></i> Profile</a>
+                                    <a class="dropdown-item" href="{{ route('favorites') }}"><i class="fas fa-user"></i> Favorites</a>
+
                                     @if (auth()->user()->trainer == 1 AND auth()->user()->trainer_approved == 1)
                                         <a class="dropdown-item" href="{{ route('training_list') }}"><i class="fas fa-dumbbell"></i> Your trainings</a>
                                         <a class="dropdown-item" href="{{ route('exercise_list') }}"><i class="fas fa-running"></i> Add exercise</a>    

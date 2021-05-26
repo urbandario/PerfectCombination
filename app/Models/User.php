@@ -50,4 +50,12 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany('App\Models\Training');
     }
+
+    /**
+     * Get users that favored the training.
+     */
+    public function favoriteTrainings()
+    {
+        return $this->belongsToMany('App\Models\Training','favorite_trainings');
+    }
 }
