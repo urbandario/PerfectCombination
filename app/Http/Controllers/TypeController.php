@@ -24,7 +24,9 @@ class TypeController extends Controller
      */
     public function create()
     {
-        //
+	    return[
+            'name' => 'required|unique:types,name'
+        ]; 
     }
 
     /**

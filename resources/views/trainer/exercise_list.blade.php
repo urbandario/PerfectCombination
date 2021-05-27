@@ -116,7 +116,7 @@
                         @foreach ($exercises as $exercise)
                         @if ($exercise->video == null)
                             <div class="col-md-6 text-center mb-3">
-                                <img src="/img/exercise/{{ $exercise->image }}" class="image-look" alt="Recipe">
+                                <img src="/img/exercise/{{ $exercise->image }}" class="image-look" alt="Exercise">
                             </div>
                         @else
                             <div class="col-md-6 text-center mb-3">

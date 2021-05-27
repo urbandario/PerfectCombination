@@ -41,6 +41,18 @@ class UserSeeder extends Seeder
                 'phone' => '156184981',
             ],
             [
+                'name' => 'Trener2',
+                'email' => 'trener2@gmail.com',
+                'email_verified_at' => now(),
+                'password' => Hash::make('password'),
+                'trainer' => 1,
+                'trainer_approved' => 1,
+                'admin' => 0,
+                'avatar' => 'default.png',
+                'biography' => 'Trener2 biografija',
+                'phone' => '1561849816',
+            ],
+            [
                 'name' => 'Obican',
                 'email' => 'obican@gmail.com',
                 'email_verified_at' => now(),
