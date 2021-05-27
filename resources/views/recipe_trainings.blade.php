@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header"><h3>Available trainings <i class="fas fa-dumbbell"></i></h3></div>
+                <div class="card-header"><h3>Trainings that have: {{ $recipe->name }} recipe<i class="fas fa-utensils"></i></h3></div>
                 <div class="card-body">
                     <div class="row">
                         @foreach ($trainings as $training)
@@ -20,7 +20,6 @@
                                       <p class="card-text">Description: {{ $training->description }}</p>
                                       @if ($training->recipe()->first() != null)
                                         <p class="card-text">Recepi: {{ $training->recipe()->first()->name }}</p>
-                                        <a href="{{ $training->recipe()->first()->getCleanUrlRecipeTrainings() }}">-- See all training with this recipe --</a> 
                                       @endif
                                     </div>
                                     <div class="card-footer text-center">

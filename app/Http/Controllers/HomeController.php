@@ -23,7 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $trainings = Training::all()->take(3);
+        $trainings = Training::all()->take(6);
         return view('home')->with('trainings',$trainings);
     }
     

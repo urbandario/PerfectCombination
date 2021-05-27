@@ -40,6 +40,13 @@ class RecipesController extends Controller
         return view('recipes')->with('recipes',$recipes);
     }
 
+    public function recipeTrainings($recipe_id)
+    {
+        $recipe = Recipe::find($recipe_id);
+        $trainings = $recipe->trainings()->get();
+        return view('recipe_trainings')->with(['recipe'=>$recipe,'trainings'=>$trainings]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

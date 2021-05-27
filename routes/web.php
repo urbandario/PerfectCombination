@@ -53,6 +53,8 @@ Route::post('/update_favorite','FavoritesController@updateFavorite')->name('upda
 
 // Recipes and Ingredient routes
 Route::get('/ingredient/{ingredient_id}/{name}','IngredientsController@ingredientRecipes');
+Route::get('/recipe_trainings/{recipe_id}/{name}','RecipesController@recipeTrainings');
+
 Route::get('/see_recipe','RecipesController@seeRecipe')->name('see_recipe');
 Route::get('/see_ingredients','IngredientsController@seeIngredients')->name('see_ingredients');
 Route::get('/recipes','RecipesController@showAll')->name('recipes');

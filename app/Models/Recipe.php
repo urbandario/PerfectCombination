@@ -61,6 +61,21 @@ class Recipe extends Model
         return '/recipe/'.$this->id.'/'.$cleanName;
     }
 
+    /**
+     *  Get a "clean" url string,
+     *  an training route with the training id and name
+     *  without spaces and special characters
+     *
+     * @return string
+     */
+    public function getCleanUrlRecipeTrainings()
+    {
+        $name = str_replace(' ', '-', mb_strtolower($this->name));
+        $name = iconv('UTF-8', 'ISO-8859-1//TRANSLIT//IGNORE', $name);
+        $cleanName = preg_replace('/[^A-Za-z0-9\-]/', '', $name);
+        return '/recipe_trainings/'.$this->id.'/'.$cleanName;
+    }
+
      /**
      *  Get a "clean" url for edit string,
      *  an training route with the training id and name
