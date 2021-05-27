@@ -58,4 +58,19 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsToMany('App\Models\Training','favorite_trainings');
     }
+
+    /**
+     *  Get a "clean" url string,
+     *  an training route with the training id and name
+     *  without spaces and special characters
+     *
+     * @return string
+     */
+    public function getCleanUrl()
+    {
+        $name = str_replace(' ', '-', mb_strtolower($this->name));
+        $name = iconv('UTF-8', 'ISO-8859-1//TRANSLIT//IGNORE', $name);
+        $cleanName = preg_replace('/[^A-Za-z0-9\-]/', '', $name);
+        return '/trainer/'.$this->id.'/'.$cleanName;
+    }
 }

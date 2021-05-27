@@ -61,6 +61,13 @@ class IngredientsController extends Controller
         return view('partials.modals.see_ingredients')->with('recipe',$recipe);
     }
 
+    public function ingredientRecipes($ingredient_id)
+    {
+        $ingredient = Ingredient::find($ingredient_id);
+        $recipes = $ingredient->recipes()->get();
+        return view('ingredient_recipes')->with(['recipes'=>$recipes,'ingredient'=>$ingredient]);
+    }
+
     /**
      * Display the specified resource.
      *

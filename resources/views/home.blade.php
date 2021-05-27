@@ -174,7 +174,7 @@
                     <div class="col-4 p-5">
                         <h4>{{ $training->name }}</h4>
                         <h5>{{ $training->description }}</h5>
-                        <p>Trainer: {{ $training->user->name }}</p>
+                        <p>Trainer: <a href="{{ $training->user->getCleanUrl() }}" class="text-success">{{ $training->user->name }}</a></p>
                     </div>
                     @endforeach
                     

@@ -6,7 +6,7 @@
         <div id="insertSeeIngredients"></div>
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header"><h3>Available recipes <i class="fas fa-utensils"></i></h3></div>
+                <div class="card-header"><h3>Recipes with {{ $ingredient->name }} <i class="fas fa-utensils"></i></h3></div>
 
                 <div class="card-body">
                     <div class="row">
@@ -24,7 +24,7 @@
                                     $len = count($recipe->ingredientsGet());
                                 @endphp
                                 @foreach ($recipe->ingredientsGet() as $ingredient)
-                                    <a href="{{ $ingredient->getCleanUrl() }}" class="text-success">{{ $ingredient->name }}</a>
+                                    <a href="{{ $ingredient->getCleanUrl() }}" style="color: green">{{ $ingredient->name }}</a>
                                     @php
                                         if($i < $len){echo ',';} $i++;
                                     @endphp

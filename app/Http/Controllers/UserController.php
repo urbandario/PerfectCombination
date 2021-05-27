@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
+use App\Models\User;
 use Image;
 
 class UserController extends Controller
@@ -41,5 +42,18 @@ class UserController extends Controller
 
         toast('Biography changed!','success','top-right')->showCloseButton();
         return redirect()->back();
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\User  $trainer
+     * @return \Illuminate\Http\Response
+     */
+    public function trainerBiography($trainer_id)
+    {
+        $trainer = User::find($trainer_id);
+        $trainings = $trainer->trainings()->get();
+        return view('trainer_biography')->with(['trainer'=>$trainer,'trainings'=>$trainings]);
     }
 }

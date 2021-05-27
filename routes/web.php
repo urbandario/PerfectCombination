@@ -36,24 +36,30 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/profile', 'UserController@index')->name('profile')->middleware('verified');
 Route::post('/update_avatar', 'UserController@updateAvatar')->name('update_avatar');
 Route::post('/update_biography', 'UserController@updateBiography')->name('update_biography');
+Route::get('/trainer/{trainer_id}/{name}', 'UserController@trainerBiography');
 
+
+// Training routes
 Route::get('/training/{training_id}/{name}','TrainingsController@showTraining');
 Route::get('/trainings','TrainingsController@showAll')->name('trainings');
-
-Route::get('/see_recipe','RecipesController@seeRecipe')->name('see_recipe');
-Route::get('/see_ingredients','IngredientsController@seeIngredients')->name('see_ingredients');
-Route::get('/recipes','RecipesController@showAll')->name('recipes');
 
 // Contact routes
 Route::get('/contact','ContactUsController@createForm')->name('contact');
 Route::post('/contact','ContactUsController@ContactUsForm')->name('contact.store');
 
-//Favorites routes
+// Favorites routes
 Route::get('/my_favorites','FavoritesController@index')->name('favorites');
 Route::post('/update_favorite','FavoritesController@updateFavorite')->name('update_favorite');
 
+// Recipes and Ingredient routes
+Route::get('/ingredient/{ingredient_id}/{name}','IngredientsController@ingredientRecipes');
+Route::get('/see_recipe','RecipesController@seeRecipe')->name('see_recipe');
+Route::get('/see_ingredients','IngredientsController@seeIngredients')->name('see_ingredients');
+Route::get('/recipes','RecipesController@showAll')->name('recipes');
+
 // Trainer routes
 Route::middleware('trainer')->group(function(){
+
     // Training routes
     Route::get('/training_list','TrainingsController@index')->name('training_list');
     Route::get('/create_training','TrainingsController@create')->name('create_training');
