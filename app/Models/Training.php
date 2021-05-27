@@ -37,6 +37,11 @@ class Training extends Model
         return $this->belongsToMany('App\Models\Exercise','training_exercises','training_id','exercise_id')->get();
     }
 
+    public function type()
+    {
+        return $this->belongsTo('App\Models\Type');
+    }
+
     /**
      * Get the exercises of the training.
      */

@@ -18,7 +18,8 @@ class CreateTrainingsTable extends Migration
             $table->bigInteger('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('name');
-            $table->string('type');
+            $table->bigInteger('type_id')->unsigned()->nullable();
+            $table->foreign('type_id')->references('id')->on('types')->onDelete('cascade');
             $table->string('description');
             $table->bigInteger('recipe_id')->unsigned()->nullable();
             $table->foreign('recipe_id')->references('id')->on('recipes');

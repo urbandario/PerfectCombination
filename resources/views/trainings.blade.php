@@ -18,10 +18,12 @@
                                       <h5 class="card-title font-weight-bold">Name: {{ $training->name }} </h5>
                                       <span class="card-text font-weight-bold">Type of training: {{ $training->type }}</span>
                                       <p class="card-text">Description: {{ $training->description }}</p>
+                                      <p>Trainer: <a href="{{ $training->user->getCleanUrl() }}" class="text-success">{{ $training->user->name }}</a></p>
                                       @if ($training->recipe()->first() != null)
                                         <p class="card-text">Recepi: {{ $training->recipe()->first()->name }}</p>
-                                        <a href="{{ $training->recipe()->first()->getCleanUrlRecipeTrainings() }}">-- See all training with this recipe --</a> 
+                                        <a href="{{ $training->recipe()->first()->getCleanUrlRecipeTrainings() }}" class="text-success">-- See all training with this recipe --</a> 
                                       @endif
+
                                     </div>
                                     <div class="card-footer text-center">
                                         <a href="{{ $training->getCleanUrl() }}" title="Look in detail" class="btn btn-success w-25 text-black-50"  role="button" aria-pressed="true"><i class="fas fa-eye"></i></a>

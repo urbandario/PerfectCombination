@@ -65,8 +65,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header"><h3>{{ $training->name }} <i class="fas fa-running"></i>
-                    <a href="{{ route('trainings') }}" class="btn btn-outline-success text-left ml-2" role="button" aria-pressed="true">Go back</a>
+                <div class="card-header"><h3><a href="{{ route('trainings') }}" class="text-success">Trainings</a> / {{ $training->name }} <i class="fas fa-running"></i>
                     @if ($training->recipe_id != 0)
                         <button type="button" title="See recipe" class="btn btn-success text-left" data-toggle="modal" onclick="seeRecipe( {{ $training->id }} )">Check recipe <i class="fas fa-carrot"></i></button>
                     @endif
