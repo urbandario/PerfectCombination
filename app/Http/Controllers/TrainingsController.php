@@ -50,7 +50,7 @@ class TrainingsController extends Controller
 
         $request->validate([
            'name' => 'required|max:32',
-           'type' => 'nullable|max:25',
+           'type' => 'nullable|max:25|unique:types,name',
            'description' => 'required|max:255',
            'hidden_recipe' => 'nullable',
            'price' => 'nullable',
@@ -140,7 +140,7 @@ class TrainingsController extends Controller
     {
         $request->validate([
             'name' => 'required|max:32',
-            'type' => 'nullable|max:25',
+            'type' => 'nullable|max:25|unique:types,name',
             'description' => 'required|max:255',
             'hidden_recipe' => 'nullable',
             'price' => 'nullable',
