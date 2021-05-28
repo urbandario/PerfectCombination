@@ -51,6 +51,10 @@
         $('#hidden_recipe').val($('#recipe').val());
     });
 
+    $('#typeSelect').change(function(){
+        $('#hidden_type').val($('#typeSelect').val());
+    });
+
     function deleteTraining(id) {
         swal({
             title: "Delete?",

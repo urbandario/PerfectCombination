@@ -39,7 +39,7 @@ class Training extends Model
 
     public function type()
     {
-        return $this->belongsTo('App\Models\Type');
+        return $this->belongsTo('App\Models\Type')->get();
     }
 
     /**

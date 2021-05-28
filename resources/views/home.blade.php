@@ -172,7 +172,7 @@
                 <div class="row">
                     @foreach ($trainings as $training)
                     <div class="col-4 p-5">
-                        <h4>{{ $training->name }}</h4>
+                        <h4>{{ $training->name }} <a href="{{ $training->type()->first()->getCleanUrl() }}"><span class="badge badge-success">{{ $training->type()->first()->name }}</span></a></h4>
                         <h5>{{ $training->description }}</h5>
                         <p>Trainer: <a href="{{ $training->user->getCleanUrl() }}" class="text-success">{{ $training->user->name }}</a></p>
                     </div>

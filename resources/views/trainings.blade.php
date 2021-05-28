@@ -15,8 +15,7 @@
                                         <img class="card-img-top" src="/img/trainings/{{ $training->thumbnail }}" alt="Card image cap">
                                     @endif
                                     <div class="card-body">
-                                      <h5 class="card-title font-weight-bold">Name: {{ $training->name }} </h5>
-                                      <span class="card-text font-weight-bold">Type of training: {{ $training->type }}</span>
+                                      <h5 class="card-title font-weight-bold">Name: {{ $training->name }} <a href="{{ $training->type()->first()->getCleanUrl() }}"><span class="badge badge-success">{{ $training->type()->first()->name }}</span></a></h5>
                                       <p class="card-text">Description: {{ $training->description }}</p>
                                       <p>Trainer: <a href="{{ $training->user->getCleanUrl() }}" class="text-success">{{ $training->user->name }}</a></p>
                                       @if ($training->recipe()->first() != null)

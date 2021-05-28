@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Exercise;
 use App\Models\Recipe;
 use App\Models\Training;
+use App\Models\Type;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\User;
@@ -34,7 +35,8 @@ class TrainingsController extends Controller
     {
         $exercises = Exercise::where('user_id', Auth::id())->get();
         $recipes = Recipe::where('user_id', Auth::id())->get();
-        return view('trainer.create_training')->with(['exercises'=>$exercises,'recipes'=>$recipes]);
+        $types = Type::all();
+        return view('trainer.create_training')->with(['exercises'=>$exercises,'recipes'=>$recipes,'types'=>$types]);
     }
 
     /**
@@ -48,18 +50,27 @@ class TrainingsController extends Controller
 
         $request->validate([
            'name' => 'required|max:32',
-           'type' => 'required|max:25',
+           'type' => 'nullable|max:25',
            'description' => 'required|max:255',
            'hidden_recipe' => 'nullable',
            'price' => 'nullable',
            'thumbnail' => 'nullable',
            'hidden_exercise'=> 'required',
+           'hidden_type' => 'nullable',
         ]);
 
         $training = new Training();
 
+        if($request->type != null){
+            $type = new Type();
+            $type->name = $request->type;
+            $type->save();
+            $training->type_id = $type->id;
+        }else{
+            $training->type_id = $request->hidden_type;
+        }
+
         $training->name = $request->name;
-        $training->type = $request->type;
         $training->user_id = auth()->user()->id;
         $training->recipe_id = $request->hidden_recipe;
         $training->price = $request->price;
@@ -111,9 +122,11 @@ class TrainingsController extends Controller
         $training = Training::find($training_id);
         $exercises = Exercise::where('user_id', Auth::id())->get();
         $recipes = Recipe::where('user_id', Auth::id())->get();
+        $types = Type::all();
         $selectedExercises =  $training->exercises()->pluck('exercises.id')->toArray();
+        $selectedType = $training->type_id;
         $selectedRecipes = $training->recipe_id;
-        return view('trainer.edit_training')->with(['exercises'=>$exercises,'recipes'=>$recipes,'training'=>$training,'selectedExercises'=>$selectedExercises,'selectedRecipes'=>$selectedRecipes]);
+        return view('trainer.edit_training')->with(['exercises'=>$exercises,'recipes'=>$recipes,'training'=>$training,'selectedExercises'=>$selectedExercises,'selectedRecipes'=>$selectedRecipes,'types'=>$types,'selectedType'=>$selectedType]);
     }
 
     /**
@@ -125,21 +138,29 @@ class TrainingsController extends Controller
      */
     public function update(Request $request)
     {
-        // $validator = Validator::make($request->all(), [
-        //     'id' => ['required', 'exists:users,id'],
-        //     'name' => ['required', 'max:32'],
-        //     'type' => ['required', 'max:25'],
-        //     'description' => ['required', 'max:255'],
-        //     'hidden_recipe' => ['nullable'],
-        //     'price' => ['nullable'],
-        //     'thumbnail' => ['nullable','string'],
-        //     'hidden_exercise'=> ['required'],
-        // ]);
+        $request->validate([
+            'name' => 'required|max:32',
+            'type' => 'nullable|max:25',
+            'description' => 'required|max:255',
+            'hidden_recipe' => 'nullable',
+            'price' => 'nullable',
+            'thumbnail' => 'nullable',
+            'hidden_exercise'=> 'required',
+            'hidden_type' => 'nullable',
+         ]);
 
-        // $validator->validate();
         $training = Training::find($request->training_id);
+
+        if($request->type != null){
+            $type = new Type();
+            $type->name = $request->type;
+            $type->save();
+            $training->type_id = $type->id;
+        }else{
+            $training->type_id = $request->hidden_type;
+        }
+        
         $training->name = $request->name;
-        $training->type = $request->type;
         $training->user_id = auth()->user()->id;
         $training->recipe_id = $request->hidden_recipe;
         $training->price = $request->price;

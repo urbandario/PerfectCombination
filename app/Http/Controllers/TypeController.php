@@ -12,9 +12,11 @@ class TypeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($type_id)
     {
-        //
+        $type = Type::find($type_id);
+        $trainings = $type->trainings()->get();
+        return view('trainings_with_type')->with(['trainings'=>$trainings,'type'=>$type]);
     }
 
     /**

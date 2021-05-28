@@ -17,7 +17,7 @@
                                     @endif
                                     <div class="card-body">
                                       <h5 class="card-title font-weight-bold">Name: {{ $training->name }} </h5>
-                                      <span class="card-text font-weight-bold">Type of training: {{ $training->type }}</span>
+                                      <span class="card-text font-weight-bold">Type of training: {{ $training->type()->first()->name }}</span>
                                       <p class="card-text">Description: {{ $training->description }}</p>
                                       @if ($training->recipe()->first() != null)
                                         <p class="card-text">Recepi: {{ $training->recipe()->first()->name }}</p>

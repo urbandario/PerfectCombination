@@ -33,15 +33,28 @@
                                     @enderror
                                 </div>
                                 <div class="col-6 mb-3">
-                                    <h5 for="type">Type</h5>
-                                    <input id="type" type="text" maxlength="25"  class="form-control @error('type') is-invalid @enderror" name="type" value="{{ $training->type }}" required autocomplete="type" autofocus>
-                                    <small id="infoType" class="text-secondary"></small><br>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <h5 for="typeSelect">Types: </h5>
+                                            <select name="typeSelect" id="typeSelect" class="form-control selectpicker"  title="Choose one of the type..." data-live-search="true">
+                                                @foreach ($types as $type)
+                                                    <option value="{{$type->id}}" @if($type->id == $selectedType) selected @endif>{{$type->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="col-6">
+                                            <h5 for="type">Create Type</h5>
+                                            <input id="type" type="text" maxlength="25"  class="form-control @error('type') is-invalid @enderror" name="type" autocomplete="type" autofocus>
+                                            <small id="infoType" class="text-secondary"></small><br>
 
-                                    @error('type')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                            @error('type')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    
                                 </div>
                                 <div class="col-12 mb-3">
                                     <h5 for="description" class="mt-3">Description</h5>
@@ -89,6 +102,7 @@
                         </div>
                         <input type="hidden" name="training_id" id="training_id" value="{{ isset($training->id)?$training->id:"" }}"/>
                         <input type="hidden" name="hidden_recipe" id="hidden_recipe" value="{{ $selectedRecipes }}"/>
+                        <input type="hidden" name="hidden_type" id="hidden_type" value="{{ $selectedType }}"/>
                         <input type="hidden" name="hidden_exercise" id="hidden_exercise" value="{{ json_encode($selectedExercises) }}"/>
                         <button type="submit" class="btn btn-success">Change</button>
                     </form>

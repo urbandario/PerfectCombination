@@ -29,11 +29,24 @@
                                     <strong class="text-danger">@error('name'){{ $message }}@enderror</strong>
                                 </div>
                                 <div class="col-6 mb-3">
-                                    <h5 for="type">Type</h5>
-                                    <input id="type" type="text" maxlength="25"  class="form-control @error('type') is-invalid @enderror" name="type" value="{{ old('type') }}" required autocomplete="type" autofocus>
-                                    <small id="infoType" class="text-secondary"></small><br>
-
-                                    <strong class="text-danger">@error('type'){{ $message }}@enderror</strong>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <h5 for="typeSelect">Types</h5>
+                                            <select name="typeSelect" id="typeSelect" class="form-control selectpicker"  title="Choose one of the type..." data-live-search="true">
+                                                @foreach ($types as $type)
+                                                    <option value="{{$type->id}}">{{$type->name}}</option>
+                                                @endforeach
+                                            </select>
+                                            <strong class="text-danger">@error('hidden_type'){{ $message }}@enderror</strong>
+                                        </div>
+                                        <div class="col-6">
+                                            <h5 for="type">Create Type</h5>
+                                            <input id="type" type="text" maxlength="25"  class="form-control @error('type') is-invalid @enderror" name="type" value="{{ old('type') }}" autocomplete="type" autofocus>
+                                            <small id="infoType" class="text-secondary"></small><br>
+        
+                                            <strong class="text-danger">@error('type'){{ $message }}@enderror</strong>
+                                        </div>
+                                    </div>                                   
                                 </div>
                                 <div class="col-12 mb-3">
                                     <h5 for="description" class="mt-3">Description</h5>
@@ -80,7 +93,7 @@
 
                         </div>
                         <input type="hidden" name="hidden_recipe" id="hidden_recipe" />
-                        
+                        <input type="hidden" name="hidden_type" id="hidden_type" />
                         <input type="hidden" name="hidden_exercise" id="hidden_exercise" />
                         
                         <button type="submit" class="btn btn-success">Create</button>

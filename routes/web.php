@@ -28,6 +28,7 @@ Route::middleware('admin')->group(function () {
     Route::post('/approve_trainer', 'AdminController@updateApproveTrainer')->name('approve_trainer');
     Route::post('/disapprove_trainer', 'AdminController@updateDisapproveTrainer')->name('disapprove_trainer');
     Route::get('/admin_home', 'AdminController@index')->name('admin_home');
+
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -39,9 +40,10 @@ Route::post('/update_biography', 'UserController@updateBiography')->name('update
 Route::get('/trainer/{trainer_id}/{name}', 'UserController@trainerBiography');
 
 
-// Training routes
+// Training and Training type routes
 Route::get('/training/{training_id}/{name}','TrainingsController@showTraining');
 Route::get('/trainings','TrainingsController@showAll')->name('trainings');
+Route::get('/type/{type_id}/{name}','TypeController@index');
 
 // Contact routes
 Route::get('/contact','ContactUsController@createForm')->name('contact');
@@ -54,10 +56,11 @@ Route::post('/update_favorite','FavoritesController@updateFavorite')->name('upda
 // Recipes and Ingredient routes
 Route::get('/ingredient/{ingredient_id}/{name}','IngredientsController@ingredientRecipes');
 Route::get('/recipe_trainings/{recipe_id}/{name}','RecipesController@recipeTrainings');
-
 Route::get('/see_recipe','RecipesController@seeRecipe')->name('see_recipe');
 Route::get('/see_ingredients','IngredientsController@seeIngredients')->name('see_ingredients');
 Route::get('/recipes','RecipesController@showAll')->name('recipes');
+
+
 
 // Trainer routes
 Route::middleware('trainer')->group(function(){
