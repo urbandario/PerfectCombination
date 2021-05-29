@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Recipe;
 use App\Models\Training;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,7 +26,10 @@ class HomeController extends Controller
     public function index()
     {
         $trainings = Training::all()->take(6);
-        return view('home')->with('trainings',$trainings);
+        $usersCounter = User::all()->count();
+        $recipesCounter = Recipe::all()->count();
+        $trainingsCounter = Training::all()->count();
+        return view('home')->with(['trainings'=>$trainings,'usersCounter'=>$usersCounter,'recipesCounter'=>$recipesCounter,'trainingsCounter'=>$trainingsCounter]);
     }
     
 }

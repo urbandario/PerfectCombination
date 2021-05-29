@@ -123,7 +123,13 @@
     transition: 1s;
     transition-delay: 0.75s;
 }
-
+.counter-numbers{
+  font-size: 22px;
+  font-style: italic;
+  -webkit-text-stroke: 2px green; /* width and color */
+  padding: 10px;
+  text-shadow: 8px 4px 11px green;
+}
 </style>
 @endsection
 @section('content')
@@ -168,7 +174,7 @@
         </div>
         <div class="col-12">
             <div style="background-color: white;border: 2px solid white;border-radius:25px">
-                <h3 class="custom-text p-5">Check out available trainings! And you will find your way out</h3>
+                <h3 class="custom-text">Check out available trainings! And you will find your way out</h3>
                 <div class="row">
                     @foreach ($trainings as $training)
                     <div class="col-4 p-5">
@@ -177,7 +183,18 @@
                         <p>Trainer: <a href="{{ $training->user->getCleanUrl() }}" class="text-success">{{ $training->user->name }}</a></p>
                     </div>
                     @endforeach
-                    
+                    <div class="col-12 col-md-4">
+                      <h4 class="custom-text">Registered users!</h4>
+                      <span class="counter-numbers">{{ $usersCounter }}</span>
+                    </div>
+                    <div class="col-12 col-md-4">
+                      <h4 class="custom-text">Number of recipes</h4>
+                      <span class="counter-numbers">{{ $recipesCounter }}</span>
+                    </div>
+                    <div class="col-12 col-md-4">
+                      <h4 class="custom-text">Number of trainings</h4>
+                      <span class="counter-numbers">{{ $trainingsCounter }}</span>
+                    </div>
                 </div>
                 <a class="neon" href="{{ route('trainings') }}">
                     <span></span>
