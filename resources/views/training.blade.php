@@ -65,7 +65,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header"><h3><a href="{{ route('trainings') }}" class="text-success">Trainings</a> / {{ $training->name }} <span class="badge badge-success">{{ $training->type()->first()->name }}</span> <i class="fas fa-running"></i>
+                <div class="card-header"><h3><a href="{{ route('trainings') }}" class="text-success">Trainings</a> / {{ $training->name }} <a href="{{ $training->type()->first()->getCleanUrl() }}"><span class="badge badge-success">{{ $training->type()->first()->name }}</span></a> <i class="fas fa-running"></i>
                     @if ($training->recipe_id != 0)
                         <button type="button" title="See recipe" class="btn btn-success text-left" data-toggle="modal" onclick="seeRecipe( {{ $training->id }} )">Check recipe <i class="fas fa-carrot"></i></button>
                     @endif
