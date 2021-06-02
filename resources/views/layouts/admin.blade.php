@@ -64,8 +64,33 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ route('all_users') }}">
+                                <i class="fas fa-user"></i> Users 
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('all_trainings') }}">
+                                <i class="fas fa-dumbbell"></i> Trainings
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('all_recipes') }}">
+                                <i class="fas fa-apple-alt"></i> Recipes
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('all_exercises') }}">
+                                <i class="fas fa-running"></i> Exercises
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('all_ingredients') }}">
+                                <i class="fas fa-carrot"></i> Ingredients
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('check_trainers') }}">
-                                Check trainer <span class="badge badge-pill badge-danger @if($trainer_count = App\Models\User::where('email_verified_at','!=', null)->where('trainer',1)->where('trainer_approved',0)->count() != 0) @else invisible @endif" id="trainer-count">{{ $trainer_count }}</span>
+                                <i class="fas fa-user"></i> Check trainer <span class="badge badge-pill badge-danger @if($trainer_count = App\Models\User::where('email_verified_at','!=', null)->where('trainer',1)->where('trainer_approved',0)->count() != 0) @else invisible @endif" id="trainer-count">{{ $trainer_count }}</span>
                             </a>
                         </li>
                         <li class="nav-item dropdown">

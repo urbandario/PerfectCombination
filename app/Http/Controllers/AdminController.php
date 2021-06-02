@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Mail\TrainerApproved;
 use App\Mail\TrainerDisapproved;
+use App\Models\Training;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Ingredient;
+use App\Models\Exercise;
+use App\Models\Recipe;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -30,6 +34,51 @@ class AdminController extends Controller
     {
         $users = User::where('email_verified_at', '!=', null)->where('trainer',1)->orderBy('trainer_approved')->orderBy('created_at', 'desc')->paginate(20);
         return view('admin.check_trainers')->with('users', $users);
+    }
+
+    /**
+     * @return [type]
+     */
+    public function allUsers()
+    {
+        $users = User::paginate(20);
+        return view('admin.all_users')->with('users', $users);
+    }
+
+    /**
+     * @return [type]
+     */
+    public function allRecipes()
+    {
+        $recipes = Recipe::paginate(20);
+        return view('admin.all_recipes')->with('recipes', $recipes);
+    }
+
+    /**
+     * @return [type]
+     */
+    public function allTrainings()
+    {
+        $trainings = Training::paginate(20);
+        return view('admin.all_trainings')->with('trainings', $trainings);
+    }
+
+    /**
+     * @return [type]
+     */
+    public function allIngredients()
+    {
+        $ingredients = Ingredient::paginate(20);
+        return view('admin.all_ingredients')->with('ingredients', $ingredients);
+    }
+
+    /**
+     * @return [type]
+     */
+    public function allExercises()
+    {
+        $exercises = Exercise::paginate(20);
+        return view('admin.all_exercises')->with('exercises', $exercises);
     }
 
     /**

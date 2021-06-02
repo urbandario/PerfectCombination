@@ -22,6 +22,11 @@ class Exercise extends Model
         'description',
     ];
 
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
+
     /**
      * Get all the trainings from the exercise.
      */

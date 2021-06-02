@@ -17,7 +17,7 @@
             <li class="nav-item">
                 @if(Auth::user()->admin == 1)
                     <a class="nav-link"
-                       href="{{route('admin_home')}}"><i class="fas fa-crown"></i> Admin Panel</a>
+                       href="{{route('all_users')}}"><i class="fas fa-crown"></i> Admin Panel</a>
                     <hr>
                 @endif
             </li>

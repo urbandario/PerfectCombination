@@ -27,7 +27,6 @@ Route::middleware('admin')->group(function () {
     Route::post('/trainer_request_count', 'AdminController@getCountTrainerRequest')->name('trainer_request_count');
     Route::post('/approve_trainer', 'AdminController@updateApproveTrainer')->name('approve_trainer');
     Route::post('/disapprove_trainer', 'AdminController@updateDisapproveTrainer')->name('disapprove_trainer');
-    Route::get('/admin_home', 'AdminController@index')->name('admin_home');
     Route::get('/all_users','AdminController@allUsers')->name('all_users');
     Route::get('/all_recipes','AdminController@allRecipes')->name('all_recipes');
     Route::get('/all_trainings','AdminController@allTrainings')->name('all_trainings');

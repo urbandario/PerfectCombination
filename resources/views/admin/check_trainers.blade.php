@@ -60,7 +60,7 @@
                     </tbody>
                 </table>
                 
-                @include('partials.js.check_trainers')
+                @include('partials.js.admin')
             </div>
         </div>
     </div>

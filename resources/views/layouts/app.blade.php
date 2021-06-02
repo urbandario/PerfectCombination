@@ -107,7 +107,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     @if(Auth::user()->admin == 1)
                                         <a class="dropdown-item"
-                                           href="{{route('admin_home')}}"><i class="fas fa-crown"></i> Admin Panel</a>
+                                           href="{{route('all_users')}}"><i class="fas fa-crown"></i> Admin Panel</a>
                                         <hr>
                                     @endif
                                     <a class="dropdown-item" href="{{ route('profile') }}"><i class="fas fa-user"></i> Profile</a>
