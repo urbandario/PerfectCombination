@@ -32,6 +32,8 @@
                             <th scope="col" onclick="sortTable(3)">Thumbnail <i class="fa fa-sort-down"></i></th>
                             <th scope="col" onclick="sortTable(4)">Description <i class="fa fa-sort-down"></i></th>
                             <th scope="col" onclick="sortTable(5)">Created at <i class="fa fa-sort-down"></i></th>
+                            <th scope="col" class="text-center">Actions</th>
+
                         </tr>
                     </thead>
                     <tbody class="text-left">
@@ -44,6 +46,9 @@
                                 <td><img src="/img/ingredients/{{ $ingredient->thumbnail }}" style="width: 75px; height: 75px; float:left" ></td>
                                 <td style="width: 300px">{{ $ingredient->description }}</td>
                                 <td>{{ $ingredient->created_at }}</td>
+                                <td class="text-center">
+                                    <button type="button" title="Delete ingredient" class="btn btn-sm btn-danger text-black-50" style="width: 30.6px;height: 28.9px" onclick="deleteIngredient({{ $ingredient->id }})"><i class="fa fa-trash"></i></button>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

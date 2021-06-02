@@ -81,6 +81,56 @@ class AdminController extends Controller
         return view('admin.all_exercises')->with('exercises', $exercises);
     }
 
+    public function destroyUser(Request $request)
+    {
+        $user = User::find($request->id);
+
+        $user->delete();
+
+        toast('User is deleted!','success','top-right')->showCloseButton();
+        return 200;
+    }
+
+    public function destroyRecipe(Request $request)
+    {
+        $recipe = Recipe::find($request->id);
+
+        $recipe->delete();
+
+        toast('Recipe is deleted!','success','top-right')->showCloseButton();
+        return 200;
+    }
+
+    public function destroyTraining(Request $request)
+    {
+        $training = Training::find($request->id);
+
+        $training->delete();
+
+        toast('Training is deleted!','success','top-right')->showCloseButton();
+        return 200;
+    }
+
+    public function destroyIngredient(Request $request)
+    {
+        $ingredient = Ingredient::find($request->id);
+
+        $ingredient->delete();
+
+        toast('Ingredient is deleted!','success','top-right')->showCloseButton();
+        return 200;
+    }
+
+    public function destroyExercise(Request $request)
+    {
+        $exercise = Exercise::find($request->id);
+
+        $exercise->delete();
+
+        toast('Exercise is deleted!','success','top-right')->showCloseButton();
+        return 200;
+    }
+
     /**
      *  Function that counts current unresolved, valid trainer request.
      *

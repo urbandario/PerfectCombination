@@ -33,6 +33,7 @@
                             <th scope="col" onclick="sortTable(8)">Phone <i class="fa fa-sort-down"></i></th>
                             <th scope="col" onclick="sortTable(9)">Avatar <i class="fa fa-sort-down"></i></th>
                             <th scope="col" onclick="sortTable(10)">Created at <i class="fa fa-sort-down"></i></th>
+                            <th scope="col" class="text-center">Actions</th>
                         </tr>
                     </thead>
                     <tbody class="text-left">
@@ -62,6 +63,9 @@
                                 <td>{{ $user->phone }}</td>
                                 <td><img src="/img/avatars/{{ $user->avatar }}" style="width: 50px; height: 50px; float:left; border-radius:50%; margin-right:25px;" alt="Avatar image"></td>
                                 <td>{{ $user->created_at }}</td>
+                                <td class="text-center">                                    
+                                    <button type="button" title="Delete user" class="btn btn-sm btn-danger text-black-50" style="width: 30.6px;height: 28.9px" onclick="deleteUser({{ $user->id }})"><i class="fa fa-trash"></i></button>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

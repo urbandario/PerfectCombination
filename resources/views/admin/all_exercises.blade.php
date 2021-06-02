@@ -33,6 +33,8 @@
                             <th scope="col" onclick="sortTable(4)">Video <i class="fa fa-sort-down"></i></th>
                             <th scope="col" onclick="sortTable(5)">Description <i class="fa fa-sort-down"></i></th>
                             <th scope="col" onclick="sortTable(6)">Created at <i class="fa fa-sort-down"></i></th>
+                            <th scope="col" class="text-center">Actions</th>
+
                         </tr>
                     </thead>
                     <tbody class="text-left">
@@ -50,6 +52,9 @@
                                 <td><div class="youtube-player" data-id="{{$exercise->video}}"></div></td>
                                 <td style="width: 450px">{!! $exercise->description !!}</td>
                                 <td>{{ $exercise->created_at }}</td>
+                                <td class="text-center">
+                                    <button type="button" title="Delete exercise" class="btn btn-sm btn-danger text-black-50" style="width: 30.6px;height: 28.9px" onclick="deleteExercise({{ $exercise->id }})"><i class="fa fa-trash"></i></button>
+                                </td>
                         @endforeach
                     </tbody>
                 </table>

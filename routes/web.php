@@ -27,11 +27,21 @@ Route::middleware('admin')->group(function () {
     Route::post('/trainer_request_count', 'AdminController@getCountTrainerRequest')->name('trainer_request_count');
     Route::post('/approve_trainer', 'AdminController@updateApproveTrainer')->name('approve_trainer');
     Route::post('/disapprove_trainer', 'AdminController@updateDisapproveTrainer')->name('disapprove_trainer');
+
     Route::get('/all_users','AdminController@allUsers')->name('all_users');
+    Route::post('/delete_user', 'AdminController@destroyUser')->name('delete_user');
+
     Route::get('/all_recipes','AdminController@allRecipes')->name('all_recipes');
+    Route::post('/delete_recipe', 'AdminController@destroyRecipe')->name('delete_recipe');
+
     Route::get('/all_trainings','AdminController@allTrainings')->name('all_trainings');
+    Route::post('/delete_training', 'AdminController@destroyTraining')->name('delete_training');
+
     Route::get('/all_ingredients','AdminController@allIngredients')->name('all_ingredients');
+    Route::post('/delete_ingredient', 'AdminController@destroyIngredient')->name('delete_ingredient');
+
     Route::get('/all_exercises','AdminController@allExercises')->name('all_exercises');
+    Route::post('/delete_exercise', 'AdminController@destroyExercise')->name('delete_exercise');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');

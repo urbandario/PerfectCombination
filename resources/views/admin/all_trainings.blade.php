@@ -35,6 +35,8 @@
                             <th scope="col" onclick="sortTable(6)">Price <i class="fa fa-sort-down"></i></th>
                             <th scope="col" onclick="sortTable(7)">Thumbnail <i class="fa fa-sort-down"></i></th>
                             <th scope="col" onclick="sortTable(8)">Created at <i class="fa fa-sort-down"></i></th>
+                            <th scope="col" class="text-center">Actions</th>
+
                         </tr>
                     </thead>
                     <tbody class="text-left">
@@ -58,6 +60,9 @@
                                 </td>
                                 <td><img src="/img/trainings/{{ $training->thumbnail }}" style="width: 75px; height: 75px; float:left" ></td>
                                 <td>{{ $training->created_at }}</td>
+                                <td class="text-center">                                    
+                                    <button type="button" title="Delete training" class="btn btn-sm btn-danger text-black-50" style="width: 30.6px;height: 28.9px" onclick="deleteTraining({{ $training->id }})"><i class="fa fa-trash"></i></button>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
