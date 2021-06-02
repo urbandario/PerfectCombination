@@ -174,11 +174,12 @@
         </div>
         <div class="col-12">
             <div style="background-color: white;border: 2px solid white;border-radius:25px">
-                <h3 class="custom-text">Check out available trainings! And you will find your way out</h3>
+                <h3 class="custom-text pt-5">Check out available trainings! And you will find your way out</h3>
                 <div class="row">
                     @foreach ($trainings as $training)
-                    <div class="col-4 p-5">
-                        <h4>{{ $training->name }} <a href="{{ $training->type()->first()->getCleanUrl() }}"><span class="badge badge-success">{{ $training->type()->first()->name }}</span></a></h4>
+                    <div class="col-4 px-5 pt-4">
+                        <h4><a href="{{ $training->getCleanUrl() }}" class="text-success">{{ $training->name }}</a> <a href="{{ $training->type()->first()->getCleanUrl() }}"><span class="badge badge-success">{{ $training->type()->first()->name }}</span></a></h4>
+                        <img class="image-look mb-4" src="/img/trainings/{{ $training->thumbnail }}" alt="Card image cap">
                         <h5>{{ $training->description }}</h5>
                         <p>Trainer: <a href="{{ $training->user->getCleanUrl() }}" class="text-success">{{ $training->user->name }}</a></p>
                     </div>

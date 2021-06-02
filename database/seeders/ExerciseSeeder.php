@@ -17,7 +17,7 @@ class ExerciseSeeder extends Seeder
     {
         $exercises = [
             [
-                'name' => 'Exercise1',
+                'name' => 'Squats',
                 'user_id' => '2',
                 'image' => null,
                 'video' => null,
@@ -26,7 +26,7 @@ class ExerciseSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ],
             [
-                'name' => 'Exercise2',
+                'name' => 'Lunges',
                 'user_id' => '2',
                 'image' => null,
                 'video' => null,
@@ -35,7 +35,7 @@ class ExerciseSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ],
             [
-                'name' => 'Exercise3',
+                'name' => 'Push-ups',
                 'user_id' => '3',
                 'image' => null,
                 'video' => null,
@@ -44,7 +44,7 @@ class ExerciseSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ],
             [
-                'name' => 'Exercise4',
+                'name' => 'Abdominal Crunches',
                 'user_id' => '3',
                 'image' => null,
                 'video' => null,
@@ -53,7 +53,7 @@ class ExerciseSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ],
             [
-                'name' => 'Exercise5',
+                'name' => 'Burpee',
                 'user_id' => '3',
                 'image' => null,
                 'video' => null,
@@ -62,7 +62,7 @@ class ExerciseSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ],
             [
-                'name' => 'Exercise6',
+                'name' => 'Wall sit',
                 'user_id' => '2',
                 'image' => null,
                 'video' => null,
@@ -71,7 +71,7 @@ class ExerciseSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ],
             [
-                'name' => 'Exercise7',
+                'name' => 'Calf raise',
                 'user_id' => '3',
                 'image' => null,
                 'video' => null,
@@ -80,7 +80,7 @@ class ExerciseSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ],
             [
-                'name' => 'Exercise8',
+                'name' => 'Handstand push-up',
                 'user_id' => '2',
                 'image' => null,
                 'video' => null,
@@ -89,7 +89,7 @@ class ExerciseSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ],
             [
-                'name' => 'Exercise9',
+                'name' => 'Tricep dips',
                 'user_id' => '3',
                 'image' => null,
                 'video' => null,
@@ -98,7 +98,7 @@ class ExerciseSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ],
             [
-                'name' => 'Exercise10',
+                'name' => 'Side plank',
                 'user_id' => '2',
                 'image' => null,
                 'video' => null,
