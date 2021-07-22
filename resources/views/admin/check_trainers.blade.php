@@ -52,7 +52,7 @@
                                         <button type="button" title="Approve Trainer" class="btn btn-success" onclick="approveTrainer({{$user->id}})" >Approve Trainer</button>
                                         <button type="button" title="Disapprove Trainer" class="btn btn-danger" onclick="disapproveTrainer({{$user->id}})" >Disapprove Trainer</button>
                                     @else
-                                        Partner successfuly approved!
+                                        Trainer successfuly approved!
                                     @endif                                
                                 </td>
                             </tr>

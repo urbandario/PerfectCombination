@@ -19,7 +19,7 @@
                                     <p>Description: {{ $ingredient->description }}</p>
                                 </div>
                                 <div class="col-12 col-md-3">
-                                    <p>Calories: <span class="font-weight-bold">{{ $ingredient->calorie }}</span></p>
+                                    <p>Calories(100g): <span class="font-weight-bold">{{ $ingredient->calorie }}</span></p>
                                 </div>
                                 <hr class="w-100">
                             @endforeach

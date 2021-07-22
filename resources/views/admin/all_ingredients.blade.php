@@ -28,7 +28,7 @@
                         <tr>
                             <th scope="col" onclick="sortTable(0)"># <i class="fa fa-sort-down"></i></th>
                             <th scope="col" onclick="sortTable(1)">Name <i class="fa fa-sort-down"></i></th>
-                            <th scope="col" onclick="sortTable(2)">Calorie <i class="fa fa-sort-down"></i></th>
+                            <th scope="col" onclick="sortTable(2)">Calorie(100g) <i class="fa fa-sort-down"></i></th>
                             <th scope="col" onclick="sortTable(3)">Thumbnail <i class="fa fa-sort-down"></i></th>
                             <th scope="col" onclick="sortTable(4)">Description <i class="fa fa-sort-down"></i></th>
                             <th scope="col" onclick="sortTable(5)">Created at <i class="fa fa-sort-down"></i></th>

@@ -41,7 +41,7 @@
                         @foreach($recipes as $recipe)
                             <tr>
                                 <td>{{ $recipe->id }}</td>
-                                <td>{{ $recipe->email }}</td>
+                                <td>{{ $recipe->name }}</td>
                                 <td>{{ $recipe->user->name }}</td>
                                 <td>{!! $recipe->way_of_making !!}</td>
                                 <td><img src="/img/recipes/{{ $recipe->thumbnail }}" style="width: 75px; height: 75px; float:left" ></td>
